@@ -26,6 +26,7 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #d6e4f0 100%);
             min-height: 100vh;
             color: #333;
+            line-height: 1.6;
         }
 
         /* --- STICKY HEADER --- */
@@ -44,7 +45,7 @@
         .logo-nav { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1a4d94; font-weight: 700; }
         .logo-nav img { height: 40px; }
 
-        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
         .nav-links a { text-decoration: none; color: #555; font-size: 14px; font-weight: 500; transition: 0.3s; }
         .nav-links a:hover { color: var(--ert-blue); }
 
@@ -57,6 +58,21 @@
             box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
             border: none;
             transition: 0.3s;
+        }
+
+        /* --- MOBILE MENU TOGGLE --- */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--ert-blue);
+            border-radius: 5px;
         }
 
         /* --- TEAM WRAPPER --- */
@@ -125,7 +141,6 @@
             object-fit: cover;
             border: 5px solid white;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            background: var(--blue-teal); /* Placeholder background */
         }
 
         .member-card h3 {
@@ -159,8 +174,38 @@
             font-size: 13px;
         }
 
+        /* --- RESPONSIVE MEDIA QUERIES --- */
         @media (max-width: 900px) {
-            .team-header h1 { font-size: 2.2rem; border: none; padding: 0; text-align: center; }
+            nav { padding: 15px 5%; }
+            .menu-toggle { display: flex; }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 30px;
+                gap: 20px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                text-align: center;
+            }
+
+            .nav-links.active { display: flex; }
+
+            .team-container {
+                padding: 40px 20px;
+                border-radius: 25px;
+            }
+
+            .team-header h1 {
+                font-size: 2.2rem;
+                border-left: none;
+                padding-left: 0;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -170,12 +215,17 @@
         <a href="index.html" class="logo-nav">
             <img src="images/logo.png" alt="Logo"> ERT Odisha
         </a>
-        <ul class="nav-links">
+        <ul class="nav-links" id="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="team.html" style="color:var(--ert-blue);">Team</a></li>
             <li><a href="contact.html" class="btn-red">Contact Us</a></li>
         </ul>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 
     <div class="wrapper">
@@ -188,21 +238,21 @@
 
             <div class="team-grid">
                 <div class="member-card">
-                    <img src="images/member1.jpg" alt="Member Name" class="member-img">
+                    <img src="images/member1.jpg" alt="Team Lead" class="member-img">
                     <h3>Teacher Name</h3>
                     <p class="member-role">Team Lead</p>
                     <p class="member-desc">Expert in digital content creation and educational innovation for primary schools.</p>
                 </div>
 
                 <div class="member-card">
-                    <img src="images/member2.jpg" alt="Member Name" class="member-img">
+                    <img src="images/member2.jpg" alt="Content Creator" class="member-img">
                     <h3>Teacher Name</h3>
                     <p class="member-role">Content Creator</p>
                     <p class="member-desc">Specializes in creating interactive Math and Science resources for Class 1-8.</p>
                 </div>
 
                 <div class="member-card">
-                    <img src="images/member3.jpg" alt="Member Name" class="member-img">
+                    <img src="images/member3.jpg" alt="Technical Head" class="member-img">
                     <h3>Teacher Name</h3>
                     <p class="member-role">Technical Head</p>
                     <p class="member-desc">Managing the digital infrastructure and platform development for ERT Odisha.</p>
@@ -215,6 +265,22 @@
     <footer>
         &copy; 2026 ERT Odisha | Education for All | Built with ❤️ for Students
     </footer>
+
+    <script>
+        const menu = document.querySelector('#mobile-menu');
+        const navLinks = document.querySelector('#nav-links');
+
+        menu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
