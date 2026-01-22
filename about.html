@@ -7,11 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ert-blue: #5bc0de;
-            --ert-green: #5cb85c;
-            --text-dark: #333;
-            --text-light: #666;
-            --bg-light: #f9f9f9;
+            --ert-blue: #1a73e8;
+            --ert-red: #ff4b2b;
+            --bg-light: #f0f4f8;
+            --blue-teal: linear-gradient(135deg, #00c6ff, #0072ff);
+            --red-pink: linear-gradient(135deg, #ff5f6d, #ffc371);
+            --glass: rgba(255, 255, 255, 0.85);
         }
 
         * {
@@ -22,151 +23,204 @@
         }
 
         body {
-            background-color: #fff;
-            color: var(--text-dark);
-            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #d6e4f0 100%);
+            min-height: 100vh;
+            color: #333;
         }
 
-        /* --- Hero Banner Section --- */
-        .about-hero {
-            position: relative;
-            background: linear-gradient(rgba(100, 114, 224, 0.7), rgba(100, 114, 224, 0.7)), 
-                        url('ert1.png') center/cover no-repeat;
-            height: 350px;
+        /* --- Navigation --- */
+        nav {
+            background: #fff;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .logo-nav { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1a4d94; font-weight: 700; }
+        .logo-nav img { height: 40px; }
+
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: #555; font-size: 14px; font-weight: 500; }
+
+        .btn-red {
+            background: var(--red-pink);
+            color: white !important;
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(255, 95, 109, 0.2);
+        }
+
+        /* --- Main About Container --- */
+        .wrapper {
+            padding: 60px 8%;
+        }
+
+        .main-container {
+            background: white;
+            border-radius: 40px;
+            padding: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 20px;
-        }
-
-        .about-hero h1 {
-            font-size: 4rem;
-            color: #ffcc00; /* Aesthetic Yellow from reference */
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .about-hero p {
-            max-width: 600px;
-            font-size: 1.1rem;
-            font-weight: 300;
-        }
-
-        /* --- Content Section --- */
-        .container {
-            max-width: 1100px;
-            margin: 80px auto;
-            padding: 0 20px;
-            display: flex;
             gap: 50px;
+        }
+
+        /* --- Top Section: Text & Shield --- */
+        .top-content {
+            display: flex;
             align-items: center;
+            justify-content: space-between;
+            gap: 40px;
         }
 
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            color: var(--ert-blue);
-            margin-bottom: 25px;
+        .text-area { flex: 1.2; }
+        .text-area h1 {
+            font-size: 3rem;
+            color: #1a4d94;
             line-height: 1.2;
+            margin-bottom: 25px;
+            border-left: 8px solid #ff4b2b;
+            padding-left: 20px;
         }
 
-        .about-text p {
-            color: var(--text-light);
+        .text-area p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
             margin-bottom: 20px;
-            font-size: 1rem;
-            text-align: justify;
         }
 
-        .btn-learn {
-            display: inline-block;
-            background-color: var(--ert-green);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: 0.3s;
+        .shield-area {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
         }
 
-        .btn-learn:hover {
-            background-color: #4cae4c;
-            transform: translateY(-2px);
+        .shield-area img {
+            width: 180px;
+            filter: drop-shadow(0 20px 30px rgba(0, 77, 148, 0.2));
+            animation: floating 4s ease-in-out infinite;
         }
 
-        /* --- Image Masonry Layout --- */
-        .about-images {
-            flex: 1;
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* --- Bottom Section: Image Grid --- */
+        .image-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto;
-            gap: 15px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
 
-        .about-images img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        .img-card {
+            background: var(--glass);
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             transition: 0.4s;
         }
 
-        .about-images img:hover {
-            transform: scale(1.03);
+        .img-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
-        .img-large {
-            grid-row: span 2; /* Vertical photo */
+        .img-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
         }
 
-        /* Responsive */
-        @media (max-width: 850px) {
-            .container {
-                flex-direction: column;
-                margin: 40px auto;
-            }
-            .about-hero h1 { font-size: 3rem; }
+        /* --- Feature Labels (Class Button Style) --- */
+        .labels {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .label-btn {
+            padding: 10px 25px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        footer { text-align: center; padding: 40px; color: #888; font-size: 14px; }
+
+        @media (max-width: 900px) {
+            .top-content { flex-direction: column; text-align: center; }
+            .text-area h1 { font-size: 2.2rem; border: none; padding: 0; }
+            .image-grid { grid-template-columns: 1fr; }
+            .labels { justify-content: center; flex-wrap: wrap; }
         }
     </style>
 </head>
 <body>
 
-    <section class="about-hero">
-        <h1>About</h1>
-        <p>The teachers team who work hard & put extra effort for the improvement of odisha students in an innovative way.</p>
-    </section>
+    <nav>
+        <a href="index.html" class="logo-nav">
+            <img src="logo.png" alt="Logo"> ERT Odisha
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="about.html" style="color:var(--ert-blue);">About</a></li>
+            <li><a href="#" class="btn-red">Contact Us</a></li>
+        </ul>
+    </nav>
 
-    <div class="container">
-        <div class="about-text">
-            <h2>Working For Students Over 3 Years.</h2>
-            <p>
-                <strong>Odisha e-Resource</strong> Team is a leading education oriented team, 
-                who works for the students and teachers of odisha unconditionally. Our aim is to 
-                make our learning process more easier and creative in our class rooms.
-            </p>
-            <p>
-                We create digital, audio visual materials for quality education for our teachers 
-                & students of odisha. As we all are teacher we know the value of quality education 
-                so we help our government to produce quality learning products and materials too.
-            </p>
-            <a href="#" class="btn-learn">Learn More »</a>
-        </div>
+    <div class="wrapper">
+        <div class="main-container">
+            
+            <div class="top-content">
+                <div class="text-area">
+                    <h1>Working For Students <br> Over 3 Years.</h1>
+                    <p>
+                        <strong>Odisha e-Resource Team</strong> is a leading education oriented team, working unconditionally to improve learning methods for students and teachers across Odisha.
+                    </p>
+                    <p>
+                        We create high-quality digital and audio-visual materials to make classroom learning easier, more creative, and more effective.
+                    </p>
+                    
+                    <div class="labels">
+                        <div class="label-btn" style="background: var(--blue-teal);">Innovation</div>
+                        <div class="label-btn" style="background: var(--red-pink);">Education</div>
+                        <div class="label-btn" style="background: #4CAF50;">Dedication</div>
+                    </div>
+                </div>
 
-        <div class="about-images">
-            <div class="img-large">
-                <img src="ert3.png" alt="Team Working" style="height: 100%;">
+                <div class="shield-area">
+                    <img src="logo.png" alt="ERT Shield">
+                </div>
             </div>
-            <img src="ert1.png" alt="ERT Team 1">
-            <img src="ert2.png" alt="ERT Team 2">
+
+            <div class="image-grid">
+                <div class="img-card">
+                    <img src="ert1.png" alt="Team Activity 1">
+                </div>
+                <div class="img-card">
+                    <img src="ert2.png" alt="Team Activity 2">
+                </div>
+                <div class="img-card">
+                    <img src="ert3.png" alt="Team Activity 3">
+                </div>
+            </div>
+
         </div>
     </div>
+
+    <footer>
+        &copy; 2026 ERT Odisha | Education for All
+    </footer>
 
 </body>
 </html>
