@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | ERT Odisha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ert-blue: #5bc0de;
+            --ert-green: #5cb85c;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- Hero Banner Section --- */
+        .about-hero {
+            position: relative;
+            background: linear-gradient(rgba(100, 114, 224, 0.7), rgba(100, 114, 224, 0.7)), 
+                        url('ert1.png') center/cover no-repeat;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .about-hero h1 {
+            font-size: 4rem;
+            color: #ffcc00; /* Aesthetic Yellow from reference */
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .about-hero p {
+            max-width: 600px;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        /* --- Content Section --- */
+        .container {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--ert-blue);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            text-align: justify;
+        }
+
+        .btn-learn {
+            display: inline-block;
+            background-color: var(--ert-green);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-learn:hover {
+            background-color: #4cae4c;
+            transform: translateY(-2px);
+        }
+
+        /* --- Image Masonry Layout --- */
+        .about-images {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 15px;
+        }
+
+        .about-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: 0.4s;
+        }
+
+        .about-images img:hover {
+            transform: scale(1.03);
+        }
+
+        .img-large {
+            grid-row: span 2; /* Vertical photo */
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            .container {
+                flex-direction: column;
+                margin: 40px auto;
+            }
+            .about-hero h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="about-hero">
+        <h1>About</h1>
+        <p>The teachers team who work hard & put extra effort for the improvement of odisha students in an innovative way.</p>
+    </section>
+
+    <div class="container">
+        <div class="about-text">
+            <h2>Working For Students Over 3 Years.</h2>
+            <p>
+                <strong>Odisha e-Resource</strong> Team is a leading education oriented team, 
+                who works for the students and teachers of odisha unconditionally. Our aim is to 
+                make our learning process more easier and creative in our class rooms.
+            </p>
+            <p>
+                We create digital, audio visual materials for quality education for our teachers 
+                & students of odisha. As we all are teacher we know the value of quality education 
+                so we help our government to produce quality learning products and materials too.
+            </p>
+            <a href="#" class="btn-learn">Learn More »</a>
+        </div>
+
+        <div class="about-images">
+            <div class="img-large">
+                <img src="ert3.png" alt="Team Working" style="height: 100%;">
+            </div>
+            <img src="ert1.png" alt="ERT Team 1">
+            <img src="ert2.png" alt="ERT Team 2">
+        </div>
+    </div>
+
+</body>
+</html>
