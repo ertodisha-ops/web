@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERT Odisha | Aesthetic Learning Hub</title>
+    <title>ERT Odisha | Aesthetic Digital Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ert-blue: #1a4d94;
-            --ert-red: #d93025;
-            --glass: rgba(255, 255, 255, 0.7);
+            --ert-blue: #1a73e8;
+            --ert-red: #ff4b2b;
+            --glass: rgba(255, 255, 255, 0.8);
+            --blue-grad: linear-gradient(135deg, #2196F3, #00BCD4);
+            --red-grad: linear-gradient(135deg, #ff416c, #ff4b2b);
         }
 
         * {
@@ -20,7 +22,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #d6e4f0 100%);
             min-height: 100vh;
             color: #333;
         }
@@ -28,161 +30,139 @@
         /* --- Navigation --- */
         nav {
             background: white;
-            padding: 12px 8%;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        .logo-nav { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ert-blue); font-weight: 700; }
+        .logo-nav { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1a4d94; font-weight: 700; font-size: 1.2rem; }
         .logo-nav img { height: 40px; }
 
-        .nav-links { display: flex; list-style: none; gap: 20px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #444; font-size: 14px; font-weight: 500; }
+        .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #555; font-size: 14px; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--ert-blue); }
 
-        .btn-top {
-            background: var(--ert-red);
+        .btn-learn {
+            background: var(--red-grad);
             color: white !important;
-            padding: 8px 18px;
+            padding: 8px 22px;
             border-radius: 50px;
             font-weight: 600;
+            box-shadow: 0 4px 10px rgba(255, 75, 43, 0.2);
         }
 
-        /* --- Aesthetic Hero Section --- */
+        /* --- Hero Section --- */
         .hero {
-            padding: 60px 8%;
+            padding: 80px 8% 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 40px;
         }
 
-        .hero-left { flex: 1.2; }
+        .hero-left { flex: 1; }
         .hero-left h1 {
             font-size: 3.2rem;
-            color: var(--ert-blue);
+            color: #1a4d94;
             line-height: 1.2;
             margin-bottom: 20px;
-            border-left: 8px solid var(--ert-red);
+            border-left: 8px solid #ff4b2b;
             padding-left: 20px;
         }
 
-        .hero-left p { font-size: 1.1rem; color: #555; margin-bottom: 30px; line-height: 1.6; }
+        .hero-left p { font-size: 1.1rem; color: #666; margin-bottom: 30px; max-width: 450px; }
 
         .hero-center-logo {
-            flex: 0.6;
+            flex: 0.8;
             display: flex;
             justify-content: center;
-            align-items: center;
         }
 
-        /* Floating Logo Effect */
         .hero-center-logo img {
-            width: 180px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
-            animation: floating 3s ease-in-out infinite;
+            width: 200px;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1));
+            animation: float 3s ease-in-out infinite;
         }
 
-        @keyframes floating {
+        @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-20px); }
         }
 
-        .hero-right-card {
+        .hero-right {
             flex: 1;
             background: var(--glass);
-            backdrop-filter: blur(12px);
-            padding: 35px;
+            backdrop-filter: blur(10px);
+            padding: 40px;
             border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            text-align: center;
             border: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
-        .btn-green { background: #4CAF50; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; }
-
-        /* --- Colorful Class Grid --- */
-        .class-section { padding: 40px 8% 80px; text-align: center; }
-        .class-section h2 { font-size: 2.2rem; color: var(--ert-blue); margin-bottom: 40px; }
-
+        /* --- Class Grid --- */
+        .class-title { text-align: center; margin-top: 40px; font-size: 2rem; color: #1a4d94; }
+        
         .grid {
+            padding: 50px 8% 80px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
         }
 
         .card {
-            background: var(--glass);
-            backdrop-filter: blur(8px);
-            padding: 30px;
+            background: white;
+            padding: 40px 20px;
             border-radius: 25px;
+            text-align: center;
             text-decoration: none;
             color: #333;
-            transition: 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: 1px solid rgba(255,255,255,0.4);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+            border: 1px solid #eee;
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 5px;
-            background: var(--ert-blue);
-            opacity: 0;
-            transition: 0.3s;
-        }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
 
-        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .card:hover::before { opacity: 1; }
-
-        /* Icon Styling with Gradients */
-        .icon-box {
-            width: 60px; height: 60px;
+        .icon {
+            width: 65px; height: 65px;
             border-radius: 18px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 24px; font-weight: 700; color: white;
-            margin-bottom: 15px;
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            font-size: 26px; font-weight: 700; color: white;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Specific Gradient Buttons */
-        .g-1 { background: linear-gradient(45deg, #2196F3, #00BCD4); }
-        .g-2 { background: linear-gradient(45deg, #4CAF50, #8BC34A); }
-        .g-3 { background: linear-gradient(45deg, #FF9800, #FFC107); }
-        .g-4 { background: linear-gradient(45deg, #9C27B0, #E91E63); }
-        .g-5 { background: linear-gradient(45deg, #f857a6, #ff5858); }
-        .g-6 { background: linear-gradient(45deg, #11998e, #38ef7d); }
-        .g-7 { background: linear-gradient(45deg, #FC466B, #3F5EFB); }
-        .g-8 { background: linear-gradient(45deg, #ee0979, #ff6a00); }
+        /* Specific Blue & Red/Pink Gradients */
+        .blue-grad { background: var(--blue-grad); }
+        .red-grad { background: var(--red-grad); }
 
-        .btn-class {
-            margin-top: 15px;
-            background: #fff;
+        .card h3 { font-size: 1.2rem; margin-bottom: 15px; }
+
+        .btn-open {
+            display: inline-block;
             padding: 8px 20px;
-            border-radius: 12px;
+            background: #f8f9fa;
+            border-radius: 50px;
             font-size: 13px;
-            font-weight: 700;
-            color: var(--ert-blue);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            font-weight: 600;
+            color: #666;
             transition: 0.3s;
         }
 
-        .card:hover .btn-class { background: var(--ert-blue); color: white; }
+        .card:hover .btn-open { background: #1a4d94; color: white; }
 
-        footer { padding: 40px; text-align: center; color: #777; font-size: 14px; }
+        footer { text-align: center; padding: 50px; color: #888; font-size: 14px; }
 
-        /* Responsive Mobile */
         @media (max-width: 900px) {
             .hero { flex-direction: column; text-align: center; }
             .hero-left h1 { font-size: 2.2rem; border: none; padding: 0; }
-            .hero-center-logo img { width: 120px; margin: 20px 0; }
+            .hero-center-logo img { width: 140px; margin: 30px 0; }
         }
     </style>
 </head>
@@ -190,79 +170,80 @@
 
     <nav>
         <a href="index.html" class="logo-nav">
-            <img src="logo.png" alt="Logo"> ERT Odisha
+            <img src="logo.png" alt="ERT Logo">
+            <span>ERT Odisha</span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#">Gallary</a></li>
+            <li><a href="#">Gallery</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#" class="btn-top">Learn more</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#" class="btn-learn">Learn more</a></li>
         </ul>
     </nav>
 
     <header class="hero">
         <div class="hero-left">
             <h1>We Care About <br> Our Students</h1>
-            <p>Empowering Odisha with quality digital resources for a brighter future.</p>
-            <a href="#" class="btn-green">Get Started »</a>
+            <p>Providing high-quality e-resources to help the students of Odisha learn in a digital way.</p>
         </div>
 
         <div class="hero-center-logo">
-            <img src="logo.png" alt="ERT Shield Logo">
+            <img src="logo.png" alt="ERT Shield">
         </div>
 
-        <div class="hero-right-card">
-            <h3>ERT Education</h3>
-            <p>Access class-wise materials, games, and videos unconditionally.</p>
-            <a href="#" class="btn-top">Explore All</a>
+        <div class="hero-right">
+            <h3 style="color:#1a4d94; margin-bottom:10px;">ERT Odisha Education</h3>
+            <p style="font-size:14px; color:#777; margin-bottom:20px;">Digital Learning made easy with videos and games.</p>
+            <a href="#" class="btn-learn">Learn More</a>
         </div>
     </header>
 
-    <section class="class-section">
-        <h2>Select Your Class</h2>
-        <div class="grid">
-            <a href="class1.html" class="card">
-                <div class="icon-box g-1">1</div>
-                <h3>ପ୍ରଥମ ଶ୍ରେଣୀ</h3>
-                <span class="btn-class">Open Class</span>
-            </a>
-            <a href="class2.html" class="card">
-                <div class="icon-box g-2">2</div>
-                <h3>ଦ୍ଵିତୀୟ ଶ୍ରେଣୀ</h3>
-                <span class="btn-class">Open Class</span>
-            </a>
-            <a href="class3.html" class="card">
-                <div class="icon-box g-3">3</div>
-                <h3>ତୃତୀୟ ଶ୍ରେଣୀ</h3>
-                <span class="btn-class">Open Class</span>
-            </a>
-            <a href="class4.html" class="card">
-                <div class="icon-box g-4">4</div>
-                <h3>ଚତୁର୍ଥ ଶ୍ରେଣୀ</h3>
-                <span class="btn-class">Open Class</span>
-            </a>
-            <a href="class5.html" class="card">
-                <div class="icon-box g-5">5</div>
-                <h3>ପଞ୍ଚମ ଶ୍ରେଣୀ</h3>
-                <span class="btn-class">Open Class</span>
-            </a>
-            <a href="class6.html" class="card">
-                <div class="icon-box g-6">6</div>
-                <h3>ଷଷ୍ଠ ଶ୍ରେଣୀ</h3>
-                <span class="btn-class">Open Class</span>
-            </a>
-            <a href="class7.html" class="card">
-                <div class="icon-box g-7">7</div>
-                <h3>ସପ୍ତମ ଶ୍ରେଣୀ</h3>
-                <span class="btn-class">Open Class</span>
-            </a>
-            <a href="class8.html" class="card">
-                <div class="icon-box g-8">8</div>
-                <h3>ଅଷ୍ଟମ ଶ୍ରେଣୀ</h3>
-                <span class="btn-class">Open Class</span>
-            </a>
-        </div>
-    </section>
+    <h2 class="class-title">Select Your Class</h2>
+
+    <div class="grid">
+        <a href="class1.html" class="card">
+            <div class="icon blue-grad">1</div>
+            <h3>ପ୍ରଥମ ଶ୍ରେଣୀ</h3>
+            <span class="btn-open">Open Class</span>
+        </a>
+        <a href="class2.html" class="card">
+            <div class="icon blue-grad">2</div>
+            <h3>ଦ୍ଵିତୀୟ ଶ୍ରେଣୀ</h3>
+            <span class="btn-open">Open Class</span>
+        </a>
+        <a href="class3.html" class="card">
+            <div class="icon blue-grad">3</div>
+            <h3>ତୃତୀୟ ଶ୍ରେଣୀ</h3>
+            <span class="btn-open">Open Class</span>
+        </a>
+        <a href="class4.html" class="card">
+            <div class="icon blue-grad">4</div>
+            <h3>ଚତୁର୍ଥ ଶ୍ରେଣୀ</h3>
+            <span class="btn-open">Open Class</span>
+        </a>
+
+        <a href="class5.html" class="card">
+            <div class="icon red-grad">5</div>
+            <h3>ପଞ୍ଚମ ଶ୍ରେଣୀ</h3>
+            <span class="btn-open">Open Class</span>
+        </a>
+        <a href="class6.html" class="card">
+            <div class="icon red-grad">6</div>
+            <h3>ଷଷ୍ଠ ଶ୍ରେଣୀ</h3>
+            <span class="btn-open">Open Class</span>
+        </a>
+        <a href="class7.html" class="card">
+            <div class="icon red-grad">7</div>
+            <h3>ସପ୍ତମ ଶ୍ରେଣୀ</h3>
+            <span class="btn-open">Open Class</span>
+        </a>
+        <a href="class8.html" class="card">
+            <div class="icon red-grad">8</div>
+            <h3>ଅଷ୍ଟମ ଶ୍ରେଣୀ</h3>
+            <span class="btn-open">Open Class</span>
+        </a>
+    </div>
 
     <footer>
         &copy; 2026 ERT Odisha | Education for All
