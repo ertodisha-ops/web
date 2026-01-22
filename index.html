@@ -10,7 +10,6 @@
             --ert-blue: #1a73e8;
             --ert-red: #ff4b2b;
             --bg-light: #f0f4f8;
-            /* Gradient defined by user request */
             --blue-teal: linear-gradient(135deg, #00c6ff, #0072ff);
             --red-pink: linear-gradient(135deg, #ff5f6d, #ffc371);
             --glass-card: rgba(255, 255, 255, 0.95);
@@ -86,9 +85,11 @@
             justify-content: center;
         }
 
+        /* --- UPDATED LOGO SHADOW --- */
         .hero-center-shield img {
             width: 160px;
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1));
+            /* This shadow follows the shape of the shield logo */
+            filter: drop-shadow(0 20px 30px rgba(0, 77, 148, 0.25)); 
             animation: floating 4s ease-in-out infinite;
         }
 
@@ -179,7 +180,7 @@
             font-weight: 600;
         }
 
-        /* --- NEW UPDATED BUTTON DESIGN --- */
+        /* --- PILL BUTTON DESIGN --- */
         .open-btn {
             background: #fff;
             color: #1a4d94;
