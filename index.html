@@ -155,7 +155,6 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.08);
         }
 
-        /* Icon styling based on requested gradients */
         .class-icon {
             width: 70px;
             height: 70px;
@@ -180,22 +179,31 @@
             font-weight: 600;
         }
 
+        /* --- NEW UPDATED BUTTON DESIGN --- */
         .open-btn {
             background: #fff;
             color: #1a4d94;
-            padding: 6px 20px;
-            border-radius: 50px;
-            font-size: 12px;
+            padding: 10px 30px;
+            border-radius: 12px;
+            font-size: 13px;
             font-weight: 700;
-            border: 1px solid #f0f0f0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-            transition: 0.3s;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            width: 80%;
+            text-align: center;
         }
 
-        .class-card:hover .open-btn {
-            background: #1a4d94;
-            color: white;
-            border-color: #1a4d94;
+        .blue-card:hover .open-btn {
+            background: var(--blue-teal);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(0, 114, 255, 0.3);
+        }
+
+        .red-card:hover .open-btn {
+            background: var(--red-pink);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(255, 95, 109, 0.3);
         }
 
         footer { padding: 40px; text-align: center; color: #ccc; font-size: 12px; }
@@ -244,46 +252,46 @@
     <section class="select-section">
         <h2>Select Your Class</h2>
         <div class="grid">
-            <a href="class1.html" class="class-card">
+            <a href="class1.html" class="class-card blue-card">
                 <div class="class-icon blue-icon">1</div>
                 <h3>ପ୍ରଥମ ଶ୍ରେଣୀ</h3>
-                <span class="open-btn">Open Class</span>
+                <div class="open-btn">Open Class</div>
             </a>
-            <a href="class2.html" class="class-card">
+            <a href="class2.html" class="class-card blue-card">
                 <div class="class-icon blue-icon">2</div>
                 <h3>ଦ୍ଵିତୀୟ ଶ୍ରେଣୀ</h3>
-                <span class="open-btn">Open Class</span>
+                <div class="open-btn">Open Class</div>
             </a>
-            <a href="class3.html" class="class-card">
+            <a href="class3.html" class="class-card blue-card">
                 <div class="class-icon blue-icon">3</div>
                 <h3>ତୃତୀୟ ଶ୍ରେଣୀ</h3>
-                <span class="open-btn">Open Class</span>
+                <div class="open-btn">Open Class</div>
             </a>
-            <a href="class4.html" class="class-card">
+            <a href="class4.html" class="class-card blue-card">
                 <div class="class-icon blue-icon">4</div>
                 <h3>ଚତୁର୍ଥ ଶ୍ରେଣୀ</h3>
-                <span class="open-btn">Open Class</span>
+                <div class="open-btn">Open Class</div>
             </a>
 
-            <a href="class5.html" class="class-card">
+            <a href="class5.html" class="class-card red-card">
                 <div class="class-icon red-icon">5</div>
                 <h3>ପଞ୍ଚମ ଶ୍ରେଣୀ</h3>
-                <span class="open-btn">Open Class</span>
+                <div class="open-btn">Open Class</div>
             </a>
-            <a href="class6.html" class="class-card">
+            <a href="class6.html" class="class-card red-card">
                 <div class="class-icon red-icon">6</div>
                 <h3>ଷଷ୍ଠ ଶ୍ରେଣୀ</h3>
-                <span class="open-btn">Open Class</span>
+                <div class="open-btn">Open Class</div>
             </a>
-            <a href="class7.html" class="class-card">
+            <a href="class7.html" class="class-card red-card">
                 <div class="class-icon red-icon">7</div>
                 <h3>ସପ୍ତମ ଶ୍ରେଣୀ</h3>
-                <span class="open-btn">Open Class</span>
+                <div class="open-btn">Open Class</div>
             </a>
-            <a href="class8.html" class="class-card">
+            <a href="class8.html" class="class-card red-card">
                 <div class="class-icon red-icon">8</div>
                 <h3>ଅଷ୍ଟମ ଶ୍ରେଣୀ</h3>
-                <span class="open-btn">Open Class</span>
+                <div class="open-btn">Open Class</div>
             </a>
         </div>
     </section>
