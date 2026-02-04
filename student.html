@@ -88,6 +88,9 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            font-weight: 700;
+            color: #1a4d94;
+            text-transform: uppercase;
         }
 
         .tile:hover {
@@ -95,7 +98,6 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.06);
         }
 
-        /* Colored bottom border like the class cards */
         .tile::after {
             content: '';
             position: absolute;
@@ -106,55 +108,41 @@
             background: var(--blue-teal);
         }
 
-        .tile.subject-tile::after {
-            background: var(--red-pink);
-        }
-
-        .tile-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--blue-teal);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 10px rgba(0, 114, 255, 0.2);
-        }
+        .tile.subject-tile::after { background: var(--red-pink); }
+        .tile.type-tile::after { background: #ff9800; }
 
         /* --- QUIZ AREA --- */
         #view-quiz { height: 100%; display: flex; flex-direction: column; padding: 15px; }
-        #quiz-question-area { flex-shrink: 0; max-height: 50%; overflow-y: auto; margin-bottom: 15px; }
-        .q-text { font-size: 1.1em; font-weight: 600; line-height: 1.4; color: #1a4d94; white-space: pre-wrap; }
-        .q-img { max-width: 100%; border-radius: 12px; margin-bottom: 10px; border: 1px solid #eee; display: block; margin: 0 auto 10px auto; max-height: 200px; object-fit: contain; }
+        #quiz-question-area { flex-shrink: 0; max-height: 55%; overflow-y: auto; margin-bottom: 5px; border-bottom: 1px solid #f0f0f0; padding-bottom: 5px; }
+        .q-text { font-size: 1.15em; font-weight: 600; line-height: 1.3; color: #222; white-space: pre-wrap; }
+        .q-author { font-size: 0.85em; color: #000; opacity: 0.5; font-style: italic; margin-bottom: 12px; margin-top: 5px; display: block; }
+        .q-img { max-width: 100%; border-radius: 8px; margin: 0 auto 0.5em auto; border: 1px solid #eee; display: block; max-height: 180px; object-fit: contain; }
 
         /* OPTIONS */
         .opt-btn {
-            width: 100%; padding: 12px 15px; border: 2px solid #edf2f7; background: #fff;
-            border-radius: 12px; cursor: pointer; text-align: left; font-size: 0.95em; 
-            font-weight: 500; color: #4a5568; transition: 0.2s; margin-bottom: 8px;
+            width: 100%; padding: 10px; border: 2px solid #e0e0e0; background: #f9f9f9;
+            border-radius: 8px; cursor: pointer; text-align: left; font-size: 0.95em; 
+            color: #444; transition: all 0.2s; margin-bottom: 8px;
         }
-        .opt-btn.correct { background: #e6fffa !important; border-color: #38b2ac !important; color: #234e52; font-weight: 700; }
-        .opt-btn.wrong { background: #fff5f5 !important; border-color: #feb2b2 !important; color: #822727; }
+        .opt-btn.correct { background: #e8f5e9 !important; border-color: var(--correct) !important; color: var(--correct); font-weight: bold; }
+        .opt-btn.wrong { background: #ffebee !important; border-color: var(--wrong) !important; color: var(--wrong); opacity: 0.7; }
 
         /* CANVAS BOARD */
         #calc-board-container {
-            flex-grow: 1; background-color: #f8fafc; border-radius: 15px; border: 2px dashed #cbd5e0;
-            position: relative; margin-top: 5px; touch-action: none; overflow: hidden;
+            flex-grow: 1; background-color: #f8fafc; position: relative;
+            min-height: 150px; touch-action: none; overflow: hidden;
         }
-        canvas { display: block; width: 100%; height: 100%; }
         #smart-board-btn {
             position: absolute; bottom: 15px; right: 15px;
-            width: 50px; height: 50px; border-radius: 50%; background: white; border: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; z-index: 10; cursor: pointer;
+            width: 45px; height: 45px; border-radius: 50%; background: white; border: 1px solid #ccc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; z-index: 10;
         }
+        #smart-board-btn.is-delete { background: #ffebee; color: #c62828; }
+        #smart-board-btn.is-pen { background: #e3f2fd; color: #0d47a1; }
 
         /* FOOTER */
-        #quiz-footer { background: white; padding: 15px; border-top: 1px solid #eee; height: 80px; display: none; }
+        #quiz-footer { background: white; padding: 10px 15px; border-top: 1px solid #e0e0e0; height: 60px; display: none; }
         .next-btn {
             background: var(--red-pink); color: white; border: none; height: 100%; width: 100%;
             border-radius: 12px; font-size: 1rem; font-weight: bold; cursor: pointer;
@@ -163,20 +151,22 @@
 
         /* UTILS */
         .hidden { display: none !important; }
-        .scrollable-view { overflow-y: auto; height: 100%; }
-        .back-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--ert-blue); padding: 10px; }
-        .results-card { text-align: center; padding: 30px 20px; }
+        .scrollable-view { overflow-y: auto; height: 100%; padding: 15px; }
+        .back-btn { background: #f0f0f0; border: none; font-size: 1.2rem; padding: 5px 12px; border-radius: 6px; margin-right: 10px; cursor: pointer; }
+        .results-card { text-align: center; padding: 20px; }
         .score-circle { 
             width: 100px; height: 100px; border-radius: 50%; background: var(--blue-teal); 
             color: white; display: flex; align-items: center; justify-content: center; 
-            font-size: 2.2rem; font-weight: 800; margin: 0 auto 20px auto;
+            font-size: 2.2rem; font-weight: 800; margin: 0 auto 15px auto;
         }
+        .btn-show-ans { width: 100%; background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .board-answer-box { margin-top: 15px; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px; display: none; white-space: pre-wrap; }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <img src="images/logo.png" alt="Logo" class="app-logo">
+        <img src="logo.jpg" alt="Logo" class="app-logo">
         <div><h1>eRT Odisha</h1><span class="sub-text">Student Quiz Portal</span></div>
     </div>
 
@@ -187,16 +177,32 @@
 
     <div id="app-content">
         <div id="view-exams" class="scrollable-view">
-            <h2 style="padding: 20px 20px 0; color:#1a4d94; font-size:1.2rem; border-left: 5px solid var(--ert-red); margin-left: 20px; margin-top: 20px;">Select Exam</h2>
+            <h2 style="text-align:center; color:#555; margin-bottom:20px; font-size:1.2rem;">Select Exam</h2>
             <div class="grid-container" id="exam-grid"></div>
         </div>
 
         <div id="view-subjects" class="hidden scrollable-view">
-            <div style="padding: 10px 20px; display: flex; align-items: center; border-bottom: 1px solid #f0f0f0;">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
                 <button class="back-btn" onclick="goHome()">⬅</button>
-                <h3 id="selected-exam-title" style="margin:0; color:#1a4d94; font-size: 1.1rem;">Exam</h3>
+                <h3 id="selected-exam-title" style="margin:0; color:#1a4d94;">Exam</h3>
             </div>
             <div class="grid-container" id="subject-grid"></div>
+        </div>
+
+        <div id="view-types" class="hidden scrollable-view">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <button class="back-btn" onclick="goBackToSubjects()">⬅</button>
+                <h3 id="selected-subject-title" style="margin:0; color:#1a4d94;">Subject</h3>
+            </div>
+            <div class="grid-container" id="type-grid">
+                <div class="tile type-tile" onclick="fetchAndStartBoard('Very Short')">Very Short Questions</div>
+                <div class="tile type-tile" onclick="fetchAndStartBoard('Short')">Short Questions</div>
+                <div class="tile type-tile" onclick="fetchAndStartBoard('Long')">Long Questions</div>
+            </div>
+        </div>
+
+        <div id="view-loading" class="hidden" style="text-align: center; padding: 50px; color: #666;">
+            <div style="font-size:2rem;">⏳</div><p>Loading...</p>
         </div>
 
         <div id="view-quiz" class="hidden">
@@ -207,158 +213,236 @@
             </div>
         </div>
 
-        <div id="view-results" class="hidden results-card">
-            <h2 style="color:#1a4d94;">Quiz Completed!</h2>
+        <div id="view-results" class="hidden scrollable-view results-card">
+            <h2 style="margin-top:0; color:#1a4d94;">Quiz Completed!</h2>
             <div class="score-circle" id="final-score">0</div>
             <p id="score-text" style="font-weight:600; color:#666;">You scored X out of 10</p>
-            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 25px;">
-                <button class="next-btn" style="height: 50px;" onclick="startNewSession()">Restart Quiz</button>
-                <button class="next-btn" style="height: 50px; background:#555;" onclick="goHome()">Back to Menu</button>
+            <div style="display: grid; gap: 10px; margin-top: 20px;">
+                <button class="next-btn" style="height:50px; background:#1976d2;" onclick="restartCurrentSet()">↩ Play Again</button>
+                <button class="next-btn" style="height:50px; background:#2e7d32;" onclick="startNewSession()">🔄 New Round</button>
+                <button class="next-btn" style="height:50px; background:#757575;" onclick="goHome()">🚪 Exit</button>
             </div>
+            <div id="review-list" style="text-align:left; margin-top:20px;"></div>
         </div>
     </div>
 
     <div id="quiz-footer">
-        <button class="next-btn" id="next-btn" onclick="nextQuestion()" disabled>Next Question ➡</button>
+        <button class="next-btn" id="next-btn" onclick="nextQuestion()" disabled>Next ➡</button>
     </div>
 
     <script type="module">
-        // --- DATA CONFIG ---
+        import { db } from "./firebase-config.js";
+        import { collection, query, where, getDocs, orderBy, enableIndexedDbPersistence } 
+        from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        enableIndexedDbPersistence(db).catch(err => console.log("Persistence suppressed."));
+
+        window.addEventListener('online', () => window.location.reload());
+        if (!navigator.onLine) {
+            document.getElementById('app-content').innerHTML = `
+                <div style="text-align:center; padding:50px;"><h2 style="color:var(--ert-red);">No Internet</h2><button onclick="window.location.reload()" style="padding:10px 25px; background:var(--ert-blue); color:white; border:none; border-radius:6px;">Retry ↻</button></div>
+            `;
+        }
+
         const examConfig = {
-            "OAV": { subjects: ["English", "Math", "Science", "Social Science"] },
-            "NAVODAYA": { subjects: ["Mental Ability", "Math", "Language"] },
-            "EKALABYA": { subjects: ["Mental Ability", "Math", "English"] },
-            "PATHANI SAMANTA": { subjects: ["Math"] },
-            "NMMS": { subjects: ["Mental Ability", "Math", "Science", "Social Science"] },
-            "5TH BOARD": { subjects: ["Odia", "English", "Bigyan", "Math"] },
-            "8TH BOARD": { subjects: ["Odia", "English", "Science", "History", "Geography", "Math"] }
+            "OAV": { type: "MCQ", subjects: ["English", "Math", "Science", "Social Science"] },
+            "NAVODAYA": { type: "MCQ", subjects: ["Mental Ability", "Math", "Language"] },
+            "EKALABYA": { type: "MCQ", subjects: ["Mental Ability", "Math", "English"] },
+            "PATHANI SAMANTA": { type: "MCQ", subjects: ["Math"] },
+            "NMMS": { type: "MCQ", subjects: ["Mental Ability", "Math", "Science", "Social Science"] },
+            "5TH BOARD": { type: "BOARD", subjects: ["Odia", "English", "Paribesa Bigyan", "Samajika Bigyan", "Math"] },
+            "8TH BOARD": { type: "BOARD", subjects: ["Odia", "English", "Science", "History", "Geography", "Math", "Hindi", "Sanskrit"] }
         };
 
-        let currentExam = "", currentSubject = "";
-        let sessionQuestions = [], currentIndex = 0, score = 0;
+        let currentExam = "", currentSubject = "", currentCategory = "";
+        let isBoardMode = false;
+        let allFetchedQuestions = [];  
+        let questionBag = [];          
+        let sessionQuestions = [];     
+        let currentIndex = 0, score = 0, userReview = [], isQuizActive = false;
 
-        // --- CANVAS LOGIC ---
         let canvas, ctx, isDrawing = false, lastX = 0, lastY = 0, boardIsDirty = false;
-        
-        // --- VIEWS ---
+        const boardContainer = document.getElementById('calc-board-container');
+        const qArea = document.getElementById('quiz-question-area');
+        const smartBtn = document.getElementById('smart-board-btn');
+
         const views = {
             exams: document.getElementById('view-exams'),
             subjects: document.getElementById('view-subjects'),
+            types: document.getElementById('view-types'),
+            loading: document.getElementById('view-loading'),
             quiz: document.getElementById('view-quiz'),
             results: document.getElementById('view-results')
         };
+        const quizHeader = document.getElementById('quiz-header');
+        const quizFooter = document.getElementById('quiz-footer');
+        const nextBtn = document.getElementById('next-btn');
+        const quizContent = document.getElementById('quiz-card-content');
 
-        function hideAllViews() { Object.values(views).forEach(v => v.classList.add('hidden')); }
-
-        window.goHome = () => {
-            hideAllViews();
-            views.exams.classList.remove('hidden');
-            document.getElementById('quiz-header').style.display = 'none';
-            document.getElementById('quiz-footer').style.display = 'none';
-        };
-
-        window.showSubjects = (exam) => {
-            currentExam = exam;
-            document.getElementById('selected-exam-title').innerText = exam;
-            const grid = document.getElementById('subject-grid');
-            grid.innerHTML = "";
-            
-            examConfig[exam].subjects.forEach(sub => {
-                const tile = document.createElement('div');
-                tile.className = 'tile subject-tile';
-                tile.innerHTML = `<div class="tile-icon" style="background:var(--red-pink)">${sub.charAt(0)}</div><div style="font-weight:700;">${sub}</div>`;
-                tile.onclick = () => startQuiz(sub);
-                grid.appendChild(tile);
-            });
-            hideAllViews();
-            views.subjects.classList.remove('hidden');
-        };
-
+        window.onpopstate = function(event) { if (isQuizActive && confirm("Quit Quiz?")) exitQuiz(); else history.pushState(null, null, window.location.href); };
+        
+        function exitQuiz() { isQuizActive = false; hideAllViews(); quizHeader.style.display = 'none'; quizFooter.style.display = 'none'; views.subjects.classList.remove('hidden'); }
         function init() {
-            const grid = document.getElementById('exam-grid');
-            grid.innerHTML = "";
+            const grid = document.getElementById('exam-grid'); grid.innerHTML = "";
             Object.keys(examConfig).forEach(exam => {
-                const tile = document.createElement('div');
-                tile.className = 'tile';
-                tile.innerHTML = `<div class="tile-icon">${exam.charAt(0)}</div><div style="font-weight:700;">${exam}</div>`;
-                tile.onclick = () => showSubjects(exam);
-                grid.appendChild(tile);
+                const tile = document.createElement('div'); tile.className = 'tile'; tile.innerText = exam;
+                tile.onclick = () => showSubjects(exam); grid.appendChild(tile);
             });
             initCanvas();
         }
+        init();
 
-        // --- PLACEHOLDER QUIZ LOGIC (Add your Firebase fetch here) ---
-        function startQuiz(sub) {
-            currentSubject = sub;
-            hideAllViews();
-            views.quiz.classList.remove('hidden');
-            document.getElementById('quiz-header').style.display = 'flex';
-            document.getElementById('quiz-footer').style.display = 'block';
-            setTimeout(resizeCanvas, 100);
-            // Mock Data
-            sessionQuestions = [{question: `Sample Question for ${sub}`, answer: 'A', options: {A: 'Correct', B: 'Wrong', C: 'Wrong', D: 'Wrong'}}];
-            currentIndex = 0;
+        window.goHome = () => { isQuizActive = false; hideAllViews(); views.exams.classList.remove('hidden'); quizHeader.style.display = 'none'; quizFooter.style.display = 'none'; };
+        window.goBackToSubjects = () => { hideAllViews(); views.subjects.classList.remove('hidden'); };
+        
+        function hideAllViews() { Object.values(views).forEach(el => el.classList.add('hidden')); }
+
+        window.showSubjects = (exam) => {
+            currentExam = exam; isBoardMode = (examConfig[exam].type === "BOARD");
+            document.getElementById('selected-exam-title').innerText = exam;
+            const grid = document.getElementById('subject-grid'); grid.innerHTML = "";
+            examConfig[exam].subjects.forEach(sub => {
+                const tile = document.createElement('div'); tile.className = 'tile subject-tile'; tile.innerText = sub;
+                tile.onclick = () => isBoardMode ? showTypes(sub) : fetchAndStart(sub);
+                grid.appendChild(tile);
+            });
+            hideAllViews(); views.subjects.classList.remove('hidden');
+        };
+
+        window.showTypes = (subject) => {
+            currentSubject = subject;
+            document.getElementById('selected-subject-title').innerText = subject;
+            hideAllViews(); views.types.classList.remove('hidden');
+        };
+
+        window.fetchAndStart = async (subject) => { currentSubject = subject; isBoardMode = false; runQuery(); };
+        window.fetchAndStartBoard = async (category) => { currentCategory = category; isBoardMode = true; runQuery(); };
+
+        async function runQuery() {
+            hideAllViews(); views.loading.classList.remove('hidden');
+            try {
+                let q;
+                if(isBoardMode) {
+                    q = query(collection(db, "questions"), where("exam", "==", currentExam), where("subject", "==", currentSubject), where("category", "==", currentCategory), where("verified", "==", true), orderBy("timestamp", "desc"));
+                } else {
+                    q = query(collection(db, "questions"), where("exam", "==", currentExam), where("subject", "==", currentSubject), where("verified", "==", true), orderBy("timestamp", "desc"));
+                }
+                const snapshot = await getDocs(q);
+                allFetchedQuestions = [];
+                if(snapshot.empty) { views.loading.innerHTML = "<p>No questions found.</p><button onclick='goHome()' style='padding:10px 20px; background:#1a73e8; color:white; border:none; border-radius:5px;'>Back</button>"; return; }
+                snapshot.forEach(doc => allFetchedQuestions.push({ id: doc.id, ...doc.data() }));
+                questionBag = [...allFetchedQuestions].sort(() => 0.5 - Math.random());
+                startNewSession();
+            } catch (error) {
+                views.loading.innerHTML = `<p style="color:red">Error: ${error.message}</p><button onclick="goHome()">Go Back</button>`;
+            }
+        }
+
+        window.startNewSession = () => {
+            history.pushState(null, null, window.location.href); 
+            isQuizActive = true;
+            if (isBoardMode) { sessionQuestions = [...allFetchedQuestions].sort(() => 0.5 - Math.random()); } 
+            else {
+                if (questionBag.length === 0) { questionBag = [...allFetchedQuestions].sort(() => 0.5 - Math.random()); }
+                sessionQuestions = questionBag.splice(0, 10);
+            }
+            resetAndStart();
+        };
+        
+        window.restartCurrentSet = () => { history.pushState(null, null, window.location.href); isQuizActive = true; resetAndStart(); };
+
+        function resetAndStart() {
+            currentIndex = 0; score = 0; userReview = [];
+            hideAllViews(); views.quiz.classList.remove('hidden');
+            if (isBoardMode) {
+                quizHeader.style.display = 'none';
+                boardContainer.style.display = 'none'; 
+                qArea.style.maxHeight = '100%'; qArea.style.flexGrow = '1';
+            } else {
+                quizHeader.style.display = 'flex';
+                boardContainer.style.display = 'block'; 
+                qArea.style.maxHeight = '55%'; qArea.style.flexGrow = '0';
+            }
+            quizFooter.style.display = 'block';
+            if(!isBoardMode) setTimeout(resizeCanvas, 50);
             renderSlide();
         }
 
         function renderSlide() {
             const data = sessionQuestions[currentIndex];
-            document.getElementById('quiz-card-content').innerHTML = `
-                <div class="q-text">${data.question}</div>
-                <div style="margin-top:15px;">
-                    <button class="opt-btn" onclick="selectAnswer(this, 'A')">A) ${data.options.A}</button>
-                    <button class="opt-btn" onclick="selectAnswer(this, 'B')">B) ${data.options.B}</button>
-                </div>
-            `;
-            document.getElementById('next-btn').disabled = true;
+            const total = sessionQuestions.length;
+            if(!isBoardMode) {
+                if(ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height);
+                boardIsDirty = false; updateSmartBtn();
+                document.getElementById('q-counter').innerText = `Q ${currentIndex + 1}/${total}`;
+                document.getElementById('progress-bar').style.width = `${((currentIndex + 1) / total) * 100}%`;
+            }
+            if (isBoardMode) {
+                nextBtn.disabled = false; nextBtn.style.opacity = "1";
+                if (currentIndex === total - 1) { nextBtn.innerText = "🏠 Back to Menu"; nextBtn.style.background = "#555"; } 
+                else { nextBtn.innerText = "Next ➡"; nextBtn.style.background = "#1a73e8"; }
+            } else {
+                nextBtn.disabled = true; 
+                nextBtn.innerText = (currentIndex === total - 1) ? "Finish 🏁" : "Next ➡";
+                nextBtn.style.opacity = "0.5"; nextBtn.style.background = "#1a73e8";
+            }
+            const imgHTML = data.imageUrl ? `<img src="${data.imageUrl}" class="q-img">` : '';
+            const authorHTML = `<div class="q-author">Question by- ${data.teacher || 'Unknown'}</div>`;
+            if (isBoardMode) {
+                quizContent.innerHTML = `${imgHTML}<div class="q-text">${data.question}</div>${authorHTML}<button class="btn-show-ans" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">👁️ Show Answer</button><div class="board-answer-box"><strong>Answer:</strong><br>${data.answerText || ''}${data.answerImage ? `<br><img src="${data.answerImage}" class="q-img" style="margin-top:10px;">` : ''}</div>`;
+            } else {
+                quizContent.innerHTML = `${imgHTML}<div class="q-text">${data.question}</div>${authorHTML}<div id="options-area"><button class="opt-btn" onclick="selectAnswer(this, 'A', '${data.answer}')">A) ${data.options.A}</button><button class="opt-btn" onclick="selectAnswer(this, 'B', '${data.answer}')">B) ${data.options.B}</button><button class="opt-btn" onclick="selectAnswer(this, 'C', '${data.answer}')">C) ${data.options.C}</button><button class="opt-btn" onclick="selectAnswer(this, 'D', '${data.answer}')">D) ${data.options.D}</button></div>`;
+            }
+            if(!isBoardMode) setTimeout(resizeCanvas, 10);
         }
 
-        window.selectAnswer = (btn, ans) => {
-            document.querySelectorAll('.opt-btn').forEach(b => b.classList.add('disabled'));
-            btn.classList.add('correct');
-            score++;
-            document.getElementById('next-btn').disabled = false;
+        window.selectAnswer = (btn, selected, correct) => {
+            const btns = document.querySelectorAll('.opt-btn');
+            btns.forEach(b => b.classList.add('disabled'));
+            const isCorrect = selected === correct;
+            if(isCorrect) { btn.classList.add('correct'); score++; } 
+            else { btn.classList.add('wrong'); btns.forEach(b => { if(b.innerText.startsWith(correct + ")")) b.classList.add('correct'); }); }
+            const qData = sessionQuestions[currentIndex];
+            userReview.push({ q: qData.question, correct: isCorrect, yourAns: qData.options[selected], correctAns: qData.options[correct] });
+            nextBtn.disabled = false; nextBtn.style.opacity = "1";
         };
 
         window.nextQuestion = () => {
-            hideAllViews();
-            views.results.classList.remove('hidden');
-            document.getElementById('quiz-header').style.display = 'none';
-            document.getElementById('quiz-footer').style.display = 'none';
-            document.getElementById('final-score').innerText = score;
+            if (isBoardMode && currentIndex === sessionQuestions.length - 1) { goHome(); return; }
+            currentIndex++;
+            if(currentIndex < sessionQuestions.length) renderSlide();
+            else showResults();
         };
 
-        // --- CANVAS BOILERPLATE ---
-        function initCanvas() {
-            canvas = document.getElementById('drawing-canvas');
-            ctx = canvas.getContext('2d');
-            canvas.addEventListener('mousedown', startDraw);
-            canvas.addEventListener('mousemove', draw);
-            canvas.addEventListener('mouseup', () => isDrawing = false);
-            canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDraw(e.touches[0]); });
-            canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e.touches[0]); });
+        function showResults() {
+            isQuizActive = false; hideAllViews(); quizHeader.style.display = 'none'; quizFooter.style.display = 'none';
+            views.results.classList.remove('hidden');
+            document.getElementById('final-score').innerText = score;
+            document.getElementById('score-text').innerText = `You scored ${score} out of ${sessionQuestions.length}`;
+            const list = document.getElementById('review-list'); list.innerHTML = "<strong>Review:</strong>";
+            userReview.forEach((item, i) => {
+                const div = document.createElement('div'); div.style.padding = "10px"; div.style.borderBottom = "1px solid #eee";
+                div.style.borderLeft = item.correct ? "4px solid #2e7d32" : "4px solid #c62828";
+                div.innerHTML = `<div>Q${i+1}: ${item.q}</div><div style="font-size:0.85em; color:#666;">You: ${item.yourAns} | Correct: <b>${item.correctAns}</b></div>`;
+                list.appendChild(div);
+            });
         }
-        function resizeCanvas() {
-            const rect = document.getElementById('calc-board-container').getBoundingClientRect();
-            canvas.width = rect.width; canvas.height = rect.height;
-            ctx.strokeStyle = '#1a4d94'; ctx.lineWidth = 3; ctx.lineCap = 'round';
-        }
-        function startDraw(e) { 
-            isDrawing = true; const rect = canvas.getBoundingClientRect();
-            lastX = e.clientX - rect.left; lastY = e.clientY - rect.top;
-            boardIsDirty = true; updateSmartBtn();
-        }
-        function draw(e) {
-            if (!isDrawing) return;
-            const rect = canvas.getBoundingClientRect();
-            const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-            ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(x, y); ctx.stroke();
-            lastX = x; lastY = y;
-        }
-        window.handleBoardBtn = () => { ctx.clearRect(0,0,canvas.width,canvas.height); boardIsDirty = false; updateSmartBtn(); };
-        function updateSmartBtn() { document.getElementById('smart-board-btn').innerHTML = boardIsDirty ? "🗑️" : "✏️"; }
 
-        document.addEventListener('DOMContentLoaded', init);
+        function initCanvas() {
+            canvas = document.getElementById('drawing-canvas'); ctx = canvas.getContext('2d');
+            resizeCanvas(); ctx.lineWidth = 3; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.strokeStyle = '#00008b';
+            canvas.addEventListener('mousedown', startDraw); canvas.addEventListener('mousemove', draw); canvas.addEventListener('mouseup', stopDraw); canvas.addEventListener('mouseout', stopDraw);
+            canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDraw(e.touches[0]); }, {passive: false});
+            canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e.touches[0]); }, {passive: false});
+            canvas.addEventListener('touchend', stopDraw);
+            window.addEventListener('resize', resizeCanvas);
+        }
+        function resizeCanvas() { if(!canvas || boardContainer.style.display === 'none') return; const rect = boardContainer.getBoundingClientRect(); canvas.width = rect.width; canvas.height = rect.height; ctx.lineWidth = 3; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.strokeStyle = '#00008b'; }
+        function startDraw(e) { isDrawing = true; const rect = canvas.getBoundingClientRect(); lastX = e.clientX - rect.left; lastY = e.clientY - rect.top; if (!boardIsDirty) { boardIsDirty = true; updateSmartBtn(); } }
+        function draw(e) { if (!isDrawing) return; const rect = canvas.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top; ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(x, y); ctx.stroke(); lastX = x; lastY = y; }
+        function stopDraw() { isDrawing = false; }
+        window.handleBoardBtn = () => { if (boardIsDirty) { if(ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height); boardIsDirty = false; updateSmartBtn(); } };
+        function updateSmartBtn() { if (boardIsDirty) { smartBtn.innerHTML = "🗑️"; smartBtn.classList.remove('is-pen'); smartBtn.classList.add('is-delete'); } else { smartBtn.innerHTML = "✏️"; smartBtn.classList.remove('is-delete'); smartBtn.classList.add('is-pen'); } }
     </script>
 </body>
 </html>
