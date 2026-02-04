@@ -38,15 +38,21 @@
         }
 
         /* --- STICKY HEADER --- */
-        .top-bar { 
-            background: white; padding: 10px 15px; 
-            display: flex; align-items: center; gap: 12px; color: #1a4d94;
-            flex-shrink: 0; z-index: 100; height: 65px;
-            border-bottom: 1px solid #eee;
+        nav {
+            background: #fff;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 65px;
         }
-        .app-logo { height: 40px; width: 40px; border-radius: 8px; object-fit: cover; }
-        .top-bar h1 { margin: 0; font-size: 1.1rem; font-weight: 700; }
-        .sub-text { font-size: 0.7em; font-weight: 400; color: var(--ert-red); text-transform: uppercase; letter-spacing: 1px; display: block; }
+        .logo-nav { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1a4d94; font-weight: 700; }
+        .logo-nav img { height: 35px; border-radius: 5px; }
+        .sub-text { font-size: 0.6em; font-weight: 400; color: var(--ert-red); text-transform: uppercase; letter-spacing: 1px; display: block; }
 
         /* --- PROGRESS BAR --- */
         .quiz-status-bar {
@@ -65,110 +71,79 @@
             background: #fff;
         }
 
-        /* --- TILES (MATCHING HOME PAGE) --- */
+        /* --- TILES (MATCHING SITE THEME) --- */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 15px;
             padding: 20px;
         }
-
         .tile {
-            background: white;
-            padding: 25px 15px;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            border: 1px solid #f0f0f0;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            font-weight: 700;
-            color: #1a4d94;
-            text-transform: uppercase;
+            background: white; padding: 25px 15px; border-radius: 20px; text-align: center;
+            transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center;
+            justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #f0f0f0; cursor: pointer; position: relative; overflow: hidden;
+            font-weight: 700; color: #1a4d94; text-transform: uppercase; font-size: 0.85rem;
         }
-
-        .tile:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
-        }
-
-        .tile::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--blue-teal);
-        }
-
+        .tile:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.06); }
+        .tile::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: var(--blue-teal); }
         .tile.subject-tile::after { background: var(--red-pink); }
         .tile.type-tile::after { background: #ff9800; }
 
         /* --- QUIZ AREA --- */
         #view-quiz { height: 100%; display: flex; flex-direction: column; padding: 15px; }
         #quiz-question-area { flex-shrink: 0; max-height: 55%; overflow-y: auto; margin-bottom: 5px; border-bottom: 1px solid #f0f0f0; padding-bottom: 5px; }
-        .q-text { font-size: 1.15em; font-weight: 600; line-height: 1.3; color: #222; white-space: pre-wrap; }
-        .q-author { font-size: 0.85em; color: #000; opacity: 0.5; font-style: italic; margin-bottom: 12px; margin-top: 5px; display: block; }
-        .q-img { max-width: 100%; border-radius: 8px; margin: 0 auto 0.5em auto; border: 1px solid #eee; display: block; max-height: 180px; object-fit: contain; }
+        .q-text { font-size: 1.1em; font-weight: 600; line-height: 1.3; color: #222; }
+        .q-author { font-size: 0.8em; color: #888; font-style: italic; margin-bottom: 12px; display: block; }
+        .q-img { max-width: 100%; border-radius: 12px; margin-bottom: 10px; border: 1px solid #eee; display: block; margin: 0 auto 10px auto; max-height: 180px; object-fit: contain; }
 
         /* OPTIONS */
         .opt-btn {
-            width: 100%; padding: 10px; border: 2px solid #e0e0e0; background: #f9f9f9;
-            border-radius: 8px; cursor: pointer; text-align: left; font-size: 0.95em; 
-            color: #444; transition: all 0.2s; margin-bottom: 8px;
+            width: 100%; padding: 10px; border: 2px solid #edf2f7; background: #f9f9f9;
+            border-radius: 10px; cursor: pointer; text-align: left; font-size: 0.95em; 
+            color: #444; transition: 0.2s; margin-bottom: 8px;
         }
         .opt-btn.correct { background: #e8f5e9 !important; border-color: var(--correct) !important; color: var(--correct); font-weight: bold; }
-        .opt-btn.wrong { background: #ffebee !important; border-color: var(--wrong) !important; color: var(--wrong); opacity: 0.7; }
+        .opt-btn.wrong { background: #ffebee !important; border-color: var(--wrong) !important; color: var(--wrong); }
 
         /* CANVAS BOARD */
-        #calc-board-container {
-            flex-grow: 1; background-color: #f8fafc; position: relative;
-            min-height: 150px; touch-action: none; overflow: hidden;
-        }
+        #calc-board-container { flex-grow: 1; background-color: #f8fafc; position: relative; min-height: 150px; touch-action: none; overflow: hidden; border: 1px solid #eee; border-radius: 10px; }
         #smart-board-btn {
-            position: absolute; bottom: 15px; right: 15px;
-            width: 45px; height: 45px; border-radius: 50%; background: white; border: 1px solid #ccc;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; z-index: 10;
+            position: absolute; bottom: 15px; right: 15px; width: 45px; height: 45px; border-radius: 50%;
+            background: white; border: 1px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem; z-index: 10;
         }
         #smart-board-btn.is-delete { background: #ffebee; color: #c62828; }
         #smart-board-btn.is-pen { background: #e3f2fd; color: #0d47a1; }
 
         /* FOOTER */
-        #quiz-footer { background: white; padding: 10px 15px; border-top: 1px solid #e0e0e0; height: 60px; display: none; }
+        #quiz-footer { background: white; padding: 10px 15px; border-top: 1px solid #eee; height: 75px; display: none; }
         .next-btn {
             background: var(--red-pink); color: white; border: none; height: 100%; width: 100%;
             border-radius: 12px; font-size: 1rem; font-weight: bold; cursor: pointer;
             box-shadow: 0 4px 15px rgba(255, 75, 43, 0.2); transition: 0.2s;
         }
+        
+        /* SITE FOOTER */
+        .site-footer { background: #fff; padding: 15px; text-align: center; border-top: 1px solid #eee; color: #aaa; font-size: 11px; flex-shrink: 0; }
 
         /* UTILS */
         .hidden { display: none !important; }
         .scrollable-view { overflow-y: auto; height: 100%; padding: 15px; }
         .back-btn { background: #f0f0f0; border: none; font-size: 1.2rem; padding: 5px 12px; border-radius: 6px; margin-right: 10px; cursor: pointer; }
-        .results-card { text-align: center; padding: 20px; }
-        .score-circle { 
-            width: 100px; height: 100px; border-radius: 50%; background: var(--blue-teal); 
-            color: white; display: flex; align-items: center; justify-content: center; 
-            font-size: 2.2rem; font-weight: 800; margin: 0 auto 15px auto;
-        }
+        .score-circle { width: 100px; height: 100px; border-radius: 50%; background: var(--blue-teal); color: white; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: 800; margin: 0 auto 15px auto; }
         .btn-show-ans { width: 100%; background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        .board-answer-box { margin-top: 15px; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px; display: none; white-space: pre-wrap; }
+        .board-answer-box { margin-top: 15px; padding: 15px; background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 4px; display: none; white-space: pre-wrap; font-size: 0.9em; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <img src="logo.jpg" alt="Logo" class="app-logo">
-        <div><h1>eRT Odisha</h1><span class="sub-text">Student Quiz Portal</span></div>
-    </div>
+    <nav>
+        <div class="logo-nav">
+            <img src="images/logo.png" alt="ERT"> 
+            <div><h1>eRT Odisha</h1><span class="sub-text">Student Portal</span></div>
+        </div>
+    </nav>
 
     <div id="quiz-header" class="quiz-status-bar">
         <span id="q-counter" class="progress-text">Q 1/10</span>
@@ -177,22 +152,22 @@
 
     <div id="app-content">
         <div id="view-exams" class="scrollable-view">
-            <h2 style="text-align:center; color:#555; margin-bottom:20px; font-size:1.2rem;">Select Exam</h2>
+            <h2 style="text-align:center; color:#1a4d94; margin-bottom:20px; font-size:1.1rem; text-transform: uppercase; letter-spacing: 1px;">Select Exam</h2>
             <div class="grid-container" id="exam-grid"></div>
         </div>
 
         <div id="view-subjects" class="hidden scrollable-view">
-            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <div style="display: flex; align-items: center; margin-bottom: 20px;">
                 <button class="back-btn" onclick="goHome()">⬅</button>
-                <h3 id="selected-exam-title" style="margin:0; color:#1a4d94;">Exam</h3>
+                <h3 id="selected-exam-title" style="margin:0; color:#1a4d94; font-size: 1rem;">Exam</h3>
             </div>
             <div class="grid-container" id="subject-grid"></div>
         </div>
 
         <div id="view-types" class="hidden scrollable-view">
-            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <div style="display: flex; align-items: center; margin-bottom: 20px;">
                 <button class="back-btn" onclick="goBackToSubjects()">⬅</button>
-                <h3 id="selected-subject-title" style="margin:0; color:#1a4d94;">Subject</h3>
+                <h3 id="selected-subject-title" style="margin:0; color:#1a4d94; font-size: 1rem;">Subject</h3>
             </div>
             <div class="grid-container" id="type-grid">
                 <div class="tile type-tile" onclick="fetchAndStartBoard('Very Short')">Very Short Questions</div>
@@ -201,8 +176,8 @@
             </div>
         </div>
 
-        <div id="view-loading" class="hidden" style="text-align: center; padding: 50px; color: #666;">
-            <div style="font-size:2rem;">⏳</div><p>Loading...</p>
+        <div id="view-loading" class="hidden" style="text-align: center; padding: 50px;">
+            <div style="font-size:2rem;">⏳</div><p>Loading Questions...</p>
         </div>
 
         <div id="view-quiz" class="hidden">
@@ -213,21 +188,25 @@
             </div>
         </div>
 
-        <div id="view-results" class="hidden scrollable-view results-card">
-            <h2 style="margin-top:0; color:#1a4d94;">Quiz Completed!</h2>
+        <div id="view-results" class="hidden scrollable-view" style="text-align:center;">
+            <h2 style="color:#1a4d94; margin-bottom: 20px;">Quiz Completed!</h2>
             <div class="score-circle" id="final-score">0</div>
-            <p id="score-text" style="font-weight:600; color:#666;">You scored X out of 10</p>
-            <div style="display: grid; gap: 10px; margin-top: 20px;">
+            <p id="score-text" style="font-weight:600; color:#666; margin-bottom: 30px;">You scored X out of 10</p>
+            <div style="display: grid; gap: 10px;">
                 <button class="next-btn" style="height:50px; background:#1976d2;" onclick="restartCurrentSet()">↩ Play Again</button>
                 <button class="next-btn" style="height:50px; background:#2e7d32;" onclick="startNewSession()">🔄 New Round</button>
                 <button class="next-btn" style="height:50px; background:#757575;" onclick="goHome()">🚪 Exit</button>
             </div>
-            <div id="review-list" style="text-align:left; margin-top:20px;"></div>
+            <div id="review-list" style="text-align:left; margin-top:30px;"></div>
         </div>
     </div>
 
     <div id="quiz-footer">
-        <button class="next-btn" id="next-btn" onclick="nextQuestion()" disabled>Next ➡</button>
+        <button class="next-btn" id="next-btn" onclick="nextQuestion()" disabled>Next Question ➡</button>
+    </div>
+
+    <div class="site-footer" id="site-footer">
+        &copy; 2026 ERT Odisha | Education for All
     </div>
 
     <script type="module">
@@ -278,10 +257,18 @@
         const quizFooter = document.getElementById('quiz-footer');
         const nextBtn = document.getElementById('next-btn');
         const quizContent = document.getElementById('quiz-card-content');
+        const siteFooter = document.getElementById('site-footer');
 
         window.onpopstate = function(event) { if (isQuizActive && confirm("Quit Quiz?")) exitQuiz(); else history.pushState(null, null, window.location.href); };
         
-        function exitQuiz() { isQuizActive = false; hideAllViews(); quizHeader.style.display = 'none'; quizFooter.style.display = 'none'; views.subjects.classList.remove('hidden'); }
+        function exitQuiz() { 
+            isQuizActive = false; 
+            hideAllViews(); 
+            quizHeader.style.display = 'none'; 
+            quizFooter.style.display = 'none'; 
+            siteFooter.style.display = 'block';
+            views.subjects.classList.remove('hidden'); 
+        }
         function init() {
             const grid = document.getElementById('exam-grid'); grid.innerHTML = "";
             Object.keys(examConfig).forEach(exam => {
@@ -292,7 +279,14 @@
         }
         init();
 
-        window.goHome = () => { isQuizActive = false; hideAllViews(); views.exams.classList.remove('hidden'); quizHeader.style.display = 'none'; quizFooter.style.display = 'none'; };
+        window.goHome = () => { 
+            isQuizActive = false; 
+            hideAllViews(); 
+            views.exams.classList.remove('hidden'); 
+            quizHeader.style.display = 'none'; 
+            quizFooter.style.display = 'none'; 
+            siteFooter.style.display = 'block';
+        };
         window.goBackToSubjects = () => { hideAllViews(); views.subjects.classList.remove('hidden'); };
         
         function hideAllViews() { Object.values(views).forEach(el => el.classList.add('hidden')); }
@@ -341,6 +335,7 @@
         window.startNewSession = () => {
             history.pushState(null, null, window.location.href); 
             isQuizActive = true;
+            siteFooter.style.display = 'none';
             if (isBoardMode) { sessionQuestions = [...allFetchedQuestions].sort(() => 0.5 - Math.random()); } 
             else {
                 if (questionBag.length === 0) { questionBag = [...allFetchedQuestions].sort(() => 0.5 - Math.random()); }
@@ -415,7 +410,11 @@
         };
 
         function showResults() {
-            isQuizActive = false; hideAllViews(); quizHeader.style.display = 'none'; quizFooter.style.display = 'none';
+            isQuizActive = false; 
+            hideAllViews(); 
+            quizHeader.style.display = 'none'; 
+            quizFooter.style.display = 'none';
+            siteFooter.style.display = 'block';
             views.results.classList.remove('hidden');
             document.getElementById('final-score').innerText = score;
             document.getElementById('score-text').innerText = `You scored ${score} out of ${sessionQuestions.length}`;
